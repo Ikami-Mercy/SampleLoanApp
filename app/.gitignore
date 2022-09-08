@@ -1,1 +1,13 @@
 /build
+/.gradle
+/captures/
+/gradlew
+/gradlew.bat
+/local.properties
+GeneratedPluginRegistrant.java
+
+# Remember to never publicly share your keystore.
+key.properties
+keystore.properties
+**/*.keystore
+**/*.jks
