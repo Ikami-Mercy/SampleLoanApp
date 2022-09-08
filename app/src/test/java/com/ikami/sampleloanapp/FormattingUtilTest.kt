@@ -7,15 +7,15 @@ import org.junit.Test
 class FormattingUtilTest {
     @Test
     fun formatDateShouldReturnTheRightDateFormat () {
-        var utils =FormattingUtil
-        var date = utils.formatDate(1562601600000)
+        val utils =FormattingUtil
+        val date = utils.formatDate(1562601600000)
         Assert.assertEquals("Mon 08 Jul 2019", date)
     }
 
     @Test
     fun format3DigitAmountShouldReturnTheRightAmountFormat () {
-        var utils =FormattingUtil
-        var amount = utils.formatAmount(740.0)
+        val utils =FormattingUtil
+        val amount = utils.formatAmount(740.0)
         Assert.assertEquals("740", amount)
     }
     @Test
