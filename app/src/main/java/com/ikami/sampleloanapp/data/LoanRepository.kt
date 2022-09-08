@@ -21,9 +21,7 @@ class LoanRepository @Inject constructor(
                 .use { it.readText() }
         } catch (ioException: IOException) {
             return Response(false, ioException, null)
-
         }
-
         val listLoanType = object : TypeToken<List<UserLoan>>() {}.type
         return Response(true, null, Gson().fromJson(jsonString, listLoanType))
     }
@@ -36,22 +34,17 @@ class LoanRepository @Inject constructor(
                 .use { it.readText() }
         } catch (ioException: IOException) {
             return Response(false, ioException, null)
-
         }
-
         val loanLimitType = object : TypeToken<CountryLocale>() {}.type
         return Response(true, null, Gson().fromJson(jsonString, loanLimitType))
     }
 
     private fun getARandomUserLoan(loansList: List<UserLoan>): UserLoan {
-
         val randomIndex = Random.nextInt(loansList.size)
-
         return loansList[randomIndex]
     }
 
     private fun getALoanLocale(userLoan: UserLoan): Locale {
-
         return when (userLoan.locale) {
             "ke" -> {
                 loadLoanLocales().body!!.ke
@@ -65,7 +58,6 @@ class LoanRepository @Inject constructor(
         }
     }
 
-
     override suspend fun fetchCurrentUserLoanInfo(): NetworkResponse<UserLoanInfo> {
         return try {
             val loanListsResult = loadLoans()
@@ -78,7 +70,6 @@ class LoanRepository @Inject constructor(
             else{
                 NetworkResponse.Error(loanListsResult.exception?.message!!)
             }
-
         } catch (e: Exception) {
             NetworkResponse.Error(e.message.toString())
         }

@@ -12,9 +12,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-
     @Singleton
     @Provides
     fun provideLoanRepository(@ApplicationContext context: Context): LoanRepository = LoanRepository(context)
-
 }

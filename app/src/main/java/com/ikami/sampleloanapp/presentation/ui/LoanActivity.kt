@@ -26,7 +26,6 @@ class LoanActivity : AppCompatActivity() {
         binding = ActivityLoanBinding.inflate(layoutInflater)
         setContentView(binding.root)
         observeUserCurrentLoan()
-
     }
 
     private fun observeUserCurrentLoan() {
@@ -37,14 +36,11 @@ class LoanActivity : AppCompatActivity() {
                     //  progressDialog.dismiss()
                     processUiToDisplay(it.data)
                 }
-
             }
         })
     }
 
     private fun processUiToDisplay(returnedUserLoan: UserLoanInfo) {
-
-
         when (returnedUserLoan.userLoan.loan?.status) {
             "due" -> {
                 binding.loanDueCard.isVisible = true
@@ -55,7 +51,6 @@ class LoanActivity : AppCompatActivity() {
                     "${getString(R.string.is_due)}${formatDate(returnedUserLoan.userLoan.loan.dueDate)}"
                 binding.tvLoanLimit.text =
                     "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${formatAmount( returnedUserLoan.locale.loanLimit)}"
-
             }
             "approved" -> {
                 binding.loanDueCard.isVisible = false
@@ -77,7 +72,6 @@ class LoanActivity : AppCompatActivity() {
                 binding.btnActionLoan.text = getString(R.string.apply_now)
                 binding.tvLoanLimit.text =
                     "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${formatAmount(returnedUserLoan.locale.loanLimit)}"
-
             }
             else -> {
                 binding.loanDueCard.isVisible = false
@@ -102,9 +96,7 @@ class LoanActivity : AppCompatActivity() {
             }
             else -> {
                 binding.roundedLoanLevelImage.setImageResource(R.drawable.img_blue_badge_large)
-
             }
-
         }
         when (returnedUserLoan.userLoan.locale) {
             "ke" -> {
@@ -116,9 +108,6 @@ class LoanActivity : AppCompatActivity() {
             else -> {
                 binding.advertImageView.setImageResource(R.drawable.img_story_card_mx)
             }
-
         }
-
     }
-
 }

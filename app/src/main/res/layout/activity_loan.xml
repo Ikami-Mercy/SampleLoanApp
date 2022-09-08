@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/screen_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@color/screen_background">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,9 +19,8 @@
             android:layout_margin="@dimen/margin_12"
             android:backgroundTint="@color/white"
             android:elevation="@dimen/margin_18"
-            app:cardCornerRadius="@dimen/margin_6"
-            android:visibility="visible"
-            >
+            android:visibility="gone"
+            app:cardCornerRadius="@dimen/margin_6">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -111,9 +109,8 @@
             android:layout_margin="@dimen/margin_12"
             android:layout_marginTop="@dimen/margin_12"
             android:elevation="@dimen/margin_18"
-            app:cardCornerRadius="@dimen/margin_6"
             android:visibility="gone"
-            >
+            app:cardCornerRadius="@dimen/margin_6">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -151,6 +148,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvOnTrack"
                     app:layout_constraintVertical_bias="0.0"
                     tools:text="Php 700" />
+
                 <TextView
                     android:id="@+id/tvDueDate"
                     android:layout_width="wrap_content"
@@ -164,8 +162,8 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDueAmount"
-                    tools:text="is due tomorrow"
-                    />
+                    tools:text="is due tomorrow" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnPayLoan"
                     android:layout_width="wrap_content"
@@ -185,8 +183,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDueDate"
-                    app:layout_constraintVertical_bias="0.0"
-                     />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/tvHowToRepay"
@@ -395,8 +392,7 @@
                     android:text="@string/view_faqs_or_send_us_a_message"
                     android:textColor="@color/primary_text"
                     android:textSize="@dimen/text_size_18"
-                    android:textStyle="bold"
-                     />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

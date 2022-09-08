@@ -1,7 +1,6 @@
 package com.ikami.sampleloanapp.domain.models
 
 import com.google.gson.annotations.SerializedName
-import com.ikami.sampleloanapp.domain.models.Loan
 
 data class UserLoan(
     @SerializedName("loan")
