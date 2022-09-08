@@ -12,6 +12,14 @@
         android:orientation="vertical"
         tools:context=".presentation.ui.LoanActivity">
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_150"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/loanStatusCard"
             android:layout_width="match_parent"
@@ -398,5 +406,6 @@
 
 
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 </ScrollView>

@@ -1,6 +1,7 @@
 package com.ikami.sampleloanapp.presentation.ui
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -31,10 +32,14 @@ class LoanActivity : AppCompatActivity() {
     private fun observeUserCurrentLoan() {
         viewModel.loanLiveData.observe(this, Observer {
             when (it) {
-                // is NetworkResponse.Loading -> progressDialog.show(this)
+                is NetworkResponse.Loading -> binding.progressBar.isVisible = true
                 is NetworkResponse.Success -> {
-                    //  progressDialog.dismiss()
+                    binding.progressBar.isVisible = false
                     processUiToDisplay(it.data)
+                }
+                is NetworkResponse.Error -> {
+                    binding.progressBar.isVisible = false
+                    Toast.makeText(this,getString(R.string.an_error_occurred),Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -50,17 +55,29 @@ class LoanActivity : AppCompatActivity() {
                 binding.tvDueDate.text =
                     "${getString(R.string.is_due)}${formatDate(returnedUserLoan.userLoan.loan.dueDate)}"
                 binding.tvLoanLimit.text =
-                    "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${formatAmount( returnedUserLoan.locale.loanLimit)}"
+                    "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${
+                        formatAmount(
+                            returnedUserLoan.locale.loanLimit
+                        )
+                    }"
             }
             "approved" -> {
                 binding.loanDueCard.isVisible = false
                 binding.loanStatusCard.isVisible = true
                 binding.tvLoanLimit.text =
-                    "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${formatAmount(returnedUserLoan.locale.loanLimit)}"
+                    "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${
+                        formatAmount(
+                            returnedUserLoan.locale.loanLimit
+                        )
+                    }"
                 binding.tvLoanTittle.text = getString(R.string.loan_approved)
                 binding.roundedLoanImageView.setImageResource(R.drawable.img_loan_status_approved)
                 binding.tvLoanHeadline.text =
-                    "${getString(R.string.approved_for)} ${returnedUserLoan.locale.currency} ${formatAmount(returnedUserLoan.userLoan.loan.approved)}"
+                    "${getString(R.string.approved_for)} ${returnedUserLoan.locale.currency} ${
+                        formatAmount(
+                            returnedUserLoan.userLoan.loan.approved
+                        )
+                    }"
                 binding.btnActionLoan.text = getString(R.string.view_offer)
             }
             "paid" -> {
@@ -71,7 +88,11 @@ class LoanActivity : AppCompatActivity() {
                 binding.tvLoanHeadline.text = getString(R.string.apply_loan)
                 binding.btnActionLoan.text = getString(R.string.apply_now)
                 binding.tvLoanLimit.text =
-                    "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${formatAmount(returnedUserLoan.locale.loanLimit)}"
+                    "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${
+                        formatAmount(
+                            returnedUserLoan.locale.loanLimit
+                        )
+                    }"
             }
             else -> {
                 binding.loanDueCard.isVisible = false
@@ -81,7 +102,11 @@ class LoanActivity : AppCompatActivity() {
                 binding.tvLoanLimit.text = getString(R.string.track_progress)
                 binding.btnActionLoan.text = getString(R.string.apply_now)
                 binding.tvLoanHeadline.text =
-                    "${getString(R.string.repay_loan)} ${returnedUserLoan.locale.currency} ${formatAmount(returnedUserLoan.locale.loanLimit)}"
+                    "${getString(R.string.repay_loan)} ${returnedUserLoan.locale.currency} ${
+                        formatAmount(
+                            returnedUserLoan.locale.loanLimit
+                        )
+                    }"
             }
         }
         when (returnedUserLoan.userLoan.loan?.level) {

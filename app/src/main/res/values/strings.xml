@@ -20,4 +20,5 @@
     <string name="track_progress">Track your progress over time</string>
     <string name="is_due">is due </string>
     <string name="repay_loan">Repay on time to get loans up to </string>
+    <string name="an_error_occurred">An error occurred </string>
 </resources>
