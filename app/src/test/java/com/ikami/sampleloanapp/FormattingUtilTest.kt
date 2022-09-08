@@ -20,8 +20,8 @@ class FormattingUtilTest {
     }
     @Test
     fun format4DigitAmountShouldReturnTheRightAmountFormat () {
-        var utils =FormattingUtil
-        var amount = utils.formatAmount(3456.0)
+        val utils =FormattingUtil
+        val amount = utils.formatAmount(3456.0)
         Assert.assertEquals("3,456", amount)
     }
 }
