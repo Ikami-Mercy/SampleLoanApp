@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/screen_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".presentation.ui.LoanActivity">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loanStatusCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12"
+            android:backgroundTint="@color/white"
+            android:elevation="@dimen/margin_18"
+            app:cardCornerRadius="@dimen/margin_6"
+            android:visibility="visible"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/roundedLoanImageLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/margin_150"
+                    android:background="@drawable/waves_bg_light_pattern"
+                    app:layout_constraintBottom_toTopOf="@+id/tvLoanTittle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:id="@+id/roundedLoanImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/margin_100"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/waves_bg_light_pattern"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/img_loan_status_apply" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvLoanTittle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:textColor="@color/black_light"
+                    android:textSize="@dimen/text_size_20"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/roundedLoanImageLayout"
+                    tools:text="Your application is approved! " />
+
+                <TextView
+                    android:id="@+id/tvLoanHeadline"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLoanTittle"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="Qualify for loans up to Php 4000" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnActionLoan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_24"
+                    android:layout_marginBottom="@dimen/margin_18"
+                    android:backgroundTint="@color/orange_background"
+                    android:enabled="true"
+                    android:paddingHorizontal="@dimen/margin_32"
+                    android:paddingVertical="@dimen/margin_12"
+                    app:cornerRadius="@dimen/margin_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLoanHeadline"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="@string/apply_now" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loanDueCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12"
+            android:layout_marginTop="@dimen/margin_12"
+            android:elevation="@dimen/margin_18"
+            app:cardCornerRadius="@dimen/margin_6"
+            android:visibility="gone"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvOnTrack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:text="@string/you_are_on_track"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDueAmount"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvDueAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:textColor="@color/teal"
+                    android:textSize="@dimen/text_size_32"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tvDueDate"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvOnTrack"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="Php 700" />
+                <TextView
+                    android:id="@+id/tvDueDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintBottom_toTopOf="@+id/btnPayLoan"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDueAmount"
+                    tools:text="is due tomorrow"
+                    />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPayLoan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_24"
+                    android:layout_marginBottom="@dimen/margin_18"
+                    android:backgroundTint="@color/orange_background"
+                    android:enabled="true"
+                    android:paddingHorizontal="@dimen/margin_18"
+                    android:paddingVertical="@dimen/margin_12"
+                    android:text="@string/make_a_payment"
+                    android:textSize="@dimen/text_size_18"
+                    app:cornerRadius="@dimen/margin_6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvHowToRepay"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDueDate"
+                    app:layout_constraintVertical_bias="0.0"
+                     />
+
+                <TextView
+                    android:id="@+id/tvHowToRepay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/how_to_repay"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/btnPayLoan"
+                    app:layout_constraintVertical_bias="0.1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/loanLimitCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12"
+            android:layout_marginTop="@dimen/margin_12"
+            android:elevation="@dimen/margin_18"
+            app:cardCornerRadius="@dimen/margin_6">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvLoanStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:text="@string/my_tala_status"
+                    android:textColor="@color/black_light"
+                    android:textSize="@dimen/text_size_20"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tvLoanLimit"
+                    app:layout_constraintEnd_toStartOf="@+id/roundedLoanLevelImage"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvLoanLimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginTop="@dimen/margin_18"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/tvViewStatus"
+                    app:layout_constraintEnd_toStartOf="@+id/roundedLoanLevelImage"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLoanStatus"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="You've been approved for Php 4000" />
+
+                <ImageView
+                    android:id="@+id/roundedLoanLevelImage"
+                    android:layout_width="@dimen/margin_100"
+                    android:layout_height="@dimen/margin_100"
+                    android:padding="@dimen/margin_12"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_bronze_badge_large"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/tvViewStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_12"
+                    android:layout_marginVertical="@dimen/margin_8"
+                    android:text="@string/view_status"
+                    android:textColor="@color/orange_text"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/roundedLoanLevelImage"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLoanLimit"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/advertBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12"
+            android:backgroundTint="@color/white"
+            android:elevation="@dimen/margin_18"
+            app:cardCornerRadius="@dimen/margin_6">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimens_180">
+
+                <ImageView
+                    android:id="@+id/advertImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/img_story_card_ph" />
+
+                <TextView
+                    android:id="@+id/storyTittle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_18"
+                    android:text="@string/tala_helped_me_with_my_dream"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_20" />
+
+                <TextView
+                    android:id="@+id/readMoreTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="262dp"
+                    android:paddingLeft="@dimen/margin_18"
+                    android:paddingBottom="@dimen/margin_18"
+                    android:text="@string/read_more"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_16" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/inviteFriendCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12"
+            android:backgroundTint="@color/white"
+            android:elevation="@dimen/margin_18"
+            app:cardCornerRadius="@dimen/margin_6">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8">
+
+                <ImageView
+                    android:id="@+id/emailIcon"
+                    android:layout_width="@dimen/dimes_34"
+                    android:layout_height="@dimen/dimes_34"
+                    android:layout_marginEnd="@dimen/margin_12"
+                    android:src="@drawable/ic_email"
+                    app:tint="@color/teal" />
+
+                <TextView
+                    android:id="@+id/tvInviteFriends"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/invite_friends_earn_money"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/sendMsg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_12"
+            android:backgroundTint="@color/white"
+            android:elevation="@dimen/margin_18"
+            app:cardCornerRadius="@dimen/margin_6">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8">
+
+                <ImageView
+                    android:id="@+id/helpIcon"
+                    android:layout_width="@dimen/dimes_34"
+                    android:layout_height="@dimen/dimes_34"
+                    android:layout_marginEnd="@dimen/margin_12"
+                    android:src="@drawable/ic_help"
+                    app:tint="@color/teal" />
+
+                <TextView
+                    android:id="@+id/tvHelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/view_faqs_or_send_us_a_message"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold"
+                     />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>
