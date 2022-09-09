@@ -12,8 +12,9 @@
         android:background="@color/tala_color">
 
         <ImageView
-            android:layout_width="@dimen/margin_120"
+            android:layout_width="@dimen/margin_100"
             android:layout_height="@dimen/margin_50"
+            android:layout_gravity="left"
             android:src="@drawable/tala_logo" />
     </androidx.appcompat.widget.Toolbar>
 

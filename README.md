@@ -13,7 +13,13 @@ To setup the project in your machine:
 
 ### TASK 
 
-SampleLoanApp is an app that displays a UserLoanProfile
+SampleLoanApp is an app that displays a UserLoanProfile.
+
+### Implementation
+
+The app loads sample loans json data *testData.json*, stored locally in the assets folder. 
+It randomly picks a loan everytime a user launches the application, then loads the loan locale information from 
+a *locales.json* in the assets folder to display the user loan profile screen.
 
 ## Architecture
 

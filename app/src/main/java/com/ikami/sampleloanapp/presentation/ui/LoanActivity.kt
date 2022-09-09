@@ -25,8 +25,6 @@ class LoanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loan)
         binding = ActivityLoanBinding.inflate(layoutInflater)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setIcon(R.drawable.tala_logo)
         setContentView(binding.root)
         observeUserCurrentLoan()
     }

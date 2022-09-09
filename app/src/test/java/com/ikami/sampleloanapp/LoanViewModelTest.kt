@@ -2,7 +2,6 @@ package com.ikami.sampleloanapp
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.ikami.sampleloanapp.data.LoanRepository
 import com.ikami.sampleloanapp.domain.models.*
 import com.ikami.sampleloanapp.domain.repositories.ILoanRepository
 import com.ikami.sampleloanapp.presentation.viewModels.LoanViewModel
@@ -81,19 +80,19 @@ class ListScreenViewModelTest {
         viewModel.fetchCurrentUserLoanInfo()
         advanceUntilIdle()
         verify(observer).onChanged(
-            NetworkResponse.Success(
-                userLoanInfo))
+            NetworkResponse.Success(userLoanInfo))
     }
 
     @Test
     fun `fetchCurrentUserLoanInfo and an error is thrown`() = runTest {
         `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
-            NetworkResponse.Loading
+            NetworkResponse.Error("IO Exception")
         )
         viewModel.fetchCurrentUserLoanInfo()
         advanceUntilIdle()
         verify(observer).onChanged(
-            NetworkResponse.Loading
+            NetworkResponse.Error("IO Exception")
         )
     }
+
 }
