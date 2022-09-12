@@ -73,7 +73,7 @@ class LoanViewModelTest{
 
 
     @Test
-    fun `fetchCurrentUserLoanInfo`() = runTest {
+    fun `when fetchCurrentUserLoanInfo Success is emitted`() = runTest {
         `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
             NetworkResponse.Success(
                 userLoanInfo
@@ -86,7 +86,7 @@ class LoanViewModelTest{
     }
 
     @Test
-    fun `fetchCurrentUserLoanInfo and an error is thrown`() = runTest {
+    fun `when fetchCurrentUserLoanInfo and an error is thrown Error is emitted`() = runTest {
         `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
             NetworkResponse.Error(RuntimeException("error").toString())
         )
@@ -97,7 +97,7 @@ class LoanViewModelTest{
         )
     }
     @Test
-    fun testNotNull() = runTest {
+    fun `fetchCurrentUserLoanInfo is not null`() = runTest {
         `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
             NetworkResponse.Success(
                 userLoanInfo
@@ -107,13 +107,13 @@ class LoanViewModelTest{
     }
 
     @Test
-    fun testIsNotified() = runTest {
+    fun `when fetchCurrentUserLoanInfo 2 states Loading, Success are emitted`() = runTest {
         `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
             NetworkResponse.Success(
                 userLoanInfo
             )
         )
         viewModel.fetchCurrentUserLoanInfo()
-        verify(observer).onChanged(NetworkResponse.Loading)
+        verify(observer,times(2))
     }
 }
