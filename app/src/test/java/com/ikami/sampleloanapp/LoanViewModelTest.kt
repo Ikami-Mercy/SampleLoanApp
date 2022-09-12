@@ -5,6 +5,8 @@ import androidx.lifecycle.Observer
 import com.ikami.sampleloanapp.domain.models.*
 import com.ikami.sampleloanapp.domain.repositories.ILoanRepository
 import com.ikami.sampleloanapp.presentation.viewModels.LoanViewModel
+import junit.framework.Assert.assertNotNull
+import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.*
@@ -37,7 +39,7 @@ class MainCoroutineRule(private val dispatcher: TestDispatcher = StandardTestDis
 
 @RunWith(MockitoJUnitRunner::class)
 @OptIn(ExperimentalCoroutinesApi::class)
-class ListScreenViewModelTest {
+class LoanViewModelTest{
 
     @ExperimentalCoroutinesApi
     @get:Rule
@@ -86,13 +88,32 @@ class ListScreenViewModelTest {
     @Test
     fun `fetchCurrentUserLoanInfo and an error is thrown`() = runTest {
         `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
-            NetworkResponse.Error("IO Exception")
+            NetworkResponse.Error(RuntimeException("error").toString())
         )
         viewModel.fetchCurrentUserLoanInfo()
         advanceUntilIdle()
         verify(observer).onChanged(
-            NetworkResponse.Error("IO Exception")
+            NetworkResponse.Error(RuntimeException("error").toString())
         )
     }
+    @Test
+    fun testNotNull() = runTest {
+        `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
+            NetworkResponse.Success(
+                userLoanInfo
+            )
+        )
+        assertNotNull(viewModel.fetchCurrentUserLoanInfo())
+    }
 
+    @Test
+    fun testIsNotified() = runTest {
+        `when`(loanRepository.fetchCurrentUserLoanInfo()).thenReturn(
+            NetworkResponse.Success(
+                userLoanInfo
+            )
+        )
+        viewModel.fetchCurrentUserLoanInfo()
+        verify(observer).onChanged(NetworkResponse.Loading)
+    }
 }

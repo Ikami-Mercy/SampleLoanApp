@@ -53,7 +53,7 @@ class LoanActivity : AppCompatActivity() {
                 binding.tvDueAmount.text =
                     "${returnedUserLoan.locale.currency}${formatAmount(returnedUserLoan.userLoan.loan.due)}"
                 binding.tvDueDate.text =
-                    "${getString(R.string.is_due)}${formatDate(returnedUserLoan.userLoan.loan.dueDate)}"
+                    "${getString(R.string.is_due)} ${formatDate(returnedUserLoan.userLoan.loan.dueDate)}"
                 binding.tvLoanLimit.text =
                     "${getString(R.string.grow_limit)} ${returnedUserLoan.locale.currency} ${
                         formatAmount(

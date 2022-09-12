@@ -24,6 +24,7 @@ class LoanViewModel @Inject constructor(
     }
 
     fun fetchCurrentUserLoanInfo() {
+        mutableLoanLiveData.value = NetworkResponse.Loading
         viewModelScope.launch {
             mutableLoanLiveData.value = repository.fetchCurrentUserLoanInfo()
         }
